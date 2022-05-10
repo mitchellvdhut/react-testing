@@ -33,7 +33,14 @@ function App() {
           >
             <>
               <form className="searchInputWrapper">
-                <input placeholder="Zoek op naam" value={value} onChange={onInputChange} className={"searchInput"}/>
+                <input
+                  placeholder="Zoek op naam"
+                  value={value}
+                  onChange={onInputChange}
+                  className={"searchInput"}
+                  id={"searchInput"}
+                  autoFocus
+                />
                 <button className={"searchButton"} onClick={onSearch}>
                   <FontAwesomeIcon icon={faSearch}/>
                 </button>
