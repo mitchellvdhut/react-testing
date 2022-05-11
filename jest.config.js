@@ -13,4 +13,5 @@ module.exports = {
     './test/e2e/jest.image.ts',
     'expect-puppeteer'
   ],
+  modulePathIgnorePatterns: ["<rootDir>/test/e2e"]
 };

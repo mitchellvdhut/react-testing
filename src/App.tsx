@@ -2,10 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import Button from "./components/button/button";
-import ReactPageScroller from 'react-page-scroller';
-import {asyncSearchByTerm} from "./search/search";
-
+import {searchByTerm} from "./search/search";
 
 function App() {
   const [value, setValue] = useState('');
@@ -17,21 +14,16 @@ function App() {
 
   async function onSearch(e: any) {
     e.preventDefault()
-    const results = await asyncSearchByTerm(value)
+    const results = searchByTerm(value)
     setSearchResults(results)
   }
-
 
   return (
     <div className="App">
       <header className="App-header">
         <div className="container">
           <h1 className="heading">React testing</h1>
-          <ReactPageScroller
-            containerHeight={window.innerHeight * 0.4}
-            containerWidth={window.innerWidth * 0.4}
-          >
-            <>
+            <div style={{width: '40vw'}}>
               <form className="searchInputWrapper">
                 <input
                   placeholder="Zoek op naam"
@@ -39,9 +31,15 @@ function App() {
                   onChange={onInputChange}
                   className={"searchInput"}
                   id={"searchInput"}
+                  data-testid={"searchInput"}
                   autoFocus
                 />
-                <button className={"searchButton"} onClick={onSearch}>
+                <button
+                  className={"searchButton"}
+                  disabled={!value}
+                  onClick={onSearch}
+                  data-testid="searchButton"
+                >
                   <FontAwesomeIcon icon={faSearch}/>
                 </button>
               </form>
@@ -63,12 +61,7 @@ function App() {
                   ))
                 }
               </table>
-            </>
-            <div className="searchInputWrapper">
-              Testing 123
             </div>
-            <Button />
-          </ReactPageScroller>
         </div>
       </header>
     </div>

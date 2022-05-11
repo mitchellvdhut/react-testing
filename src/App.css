@@ -58,6 +58,9 @@ body {
   border-radius: 0 50% 50% 0;
   cursor: pointer;
 }
+.searchButton:disabled {
+  cursor: not-allowed;
+}
 
 ::placeholder {
   color: #a1a1a1;
